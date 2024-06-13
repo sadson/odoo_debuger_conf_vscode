@@ -1,0 +1,53 @@
+{
+    // Configuração para rodar debug do VSCode no Odoo
+    "version": "2.0.0",
+    "editor.renderWhitespace": true,
+    "configurations": [   
+  
+      {
+        "name": "Python: Odoo Zenir",
+        "type": "debugpy",
+        "request": "launch",
+        "stopOnEntry": false,
+        "python": "/usr/bin/python3",
+        "console": "integratedTerminal",
+        "program": "/home/suporte/tauga/tauga",
+        "args": [
+          "-d",
+          "zenir",
+          "-r",
+          "suporte",
+          "-D",
+          "/home/suporte/arquivos/",
+          "--pidfile=/home/suporte/arquivos/tauga.pid",
+          "--http-port=8069",
+          "--longpolling-port=8169",
+          "--log-handler=PREFIX:DEBUG",
+          "--limit-memory-hard=10 GiB * 80%",
+          //  "--limit-memory-soft=6 * 324.8 MiB",
+          // Path para os Addons
+          "--addons-path=/home/suporte/base/tauga,\
+                      /home/suporte/base/padrao/odoo/addons,\
+                      /home/suporte/base/padrao/addons,\
+                      /home/suporte/base/fortes,\
+                      /home/suporte/base/zenir,\
+                      /home/suporte/base/local"
+        ],
+        "cwd": "/home/suporte",
+        "envFile": "/home/suporte/env",
+        "debugOptions": [
+          "RedirectOutput"
+        ],
+        // porta do ptvsd
+        "port": 5678
+      },
+      {
+        "name": "Python: Attach (Odoo)",
+        "type": "python",
+        "request": "attach",
+        "port": 5678,
+        "host": "localhost",
+        "longpolling_port": 8072
+      }
+    ]
+  }
